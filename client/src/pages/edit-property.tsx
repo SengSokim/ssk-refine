@@ -3,7 +3,7 @@ import { useGetIdentity } from "@pankod/refine-core";
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
 import Form from "components/common/Form";
 
-const CreateProperty = () => {
+const EditProperty = () => {
     const { data: user } = useGetIdentity();
     const [propertyImage, setPropertyImage] = useState({ name: "", url: "" });
     const {
@@ -11,7 +11,7 @@ const CreateProperty = () => {
         register,
         handleSubmit,
     } = useForm();
-
+    console.log(propertyImage)
     const handleImageChange = (file: File) => {
         const reader = (readFile: File) =>
             new Promise<string>((resolve, reject) => {
@@ -49,4 +49,4 @@ const CreateProperty = () => {
     );
 };
 
-export default CreateProperty;
+export default EditProperty;

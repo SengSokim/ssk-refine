@@ -1,11 +1,19 @@
-import React from 'react'
+
 import { Add } from '@mui/icons-material'
 import { useTable } from '@pankod/refine-core'
-import { Box, Stack, Typography, TextField, Select, MenuItem } from '@pankod/refine-mui'
+import { Box, Stack, Typography, TextField, Select, MenuItem, Card } from '@pankod/refine-mui'
 import { useNavigate } from '@pankod/refine-react-router-v6'
 import { useMemo } from "react";
-import { PropertyCard, CustomButton } from 'components'
-import { Grid } from '@mui/material';
+import { CustomButton } from 'components'
+import { Table } from '@mui/material';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Link } from "@pankod/refine-react-router-v6";
+
+
 const AllProperties = () => {
   const navigate = useNavigate();
 
@@ -19,11 +27,11 @@ const AllProperties = () => {
 
   } = useTable();
   const allProperties = data?.data ?? [];
-  
   const currentPrice = sorter.find((item) => item.field === 'price')?.order;
   const toggleSort = (field: string) => {
     setSorter([{ field, order: currentPrice === 'asc' ? 'desc' : 'asc' }])
   }
+
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
       "field" in item ? item : [],
@@ -41,12 +49,14 @@ const AllProperties = () => {
   if (isLoading) return <Typography>Loading...</Typography>
   if (isError) return <Typography>Error...</Typography>
   return (
+
     <Box>
       <Box mt="20px" sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allProperties.length ? 'There are no properties' : 'All Properties'}
+            {!allProperties.length ? 'There are no items' : 'All Items'}
           </Typography>
+
           <Box mb={2} mt={3} display="flex" width="84%" justifyContent="space-between" flexWrap="wrap">
             <Box display="flex" gap={2} flexWrap="wrap" mb={{ xs: '20px', sm: 0 }}>
               <CustomButton
@@ -95,14 +105,14 @@ const AllProperties = () => {
               >
                 <MenuItem value="">All</MenuItem>
                 {[
-                  "Apartment",
-                  "Villa",
-                  "Farmhouse",
-                  "Condos",
-                  "Townhouse",
-                  "Duplex",
-                  "Studio",
-                  "Chalet",
+                  "Leaflet",
+                  "Brochure",
+                  "Book",
+                  "Flyer",
+                  "Voucher",
+                  "Namecard",
+                  "Calendar",
+                  "Menu book",
                 ].map((type) => (
                   <MenuItem
                     key={type}
@@ -119,22 +129,51 @@ const AllProperties = () => {
       </Box>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
 
-        <CustomButton title="Add Property" handleClick={() => navigate('/properties/create')} backgroundColor="#475be8" color="#fcfcfc" icon={<Add />}></CustomButton>
+        <CustomButton title="Add Item" handleClick={() => navigate('/properties/create')} backgroundColor="#475be8" color="#fcfcfc" icon={<Add />}></CustomButton>
       </Stack>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          {allProperties.map((property) => (
-            <PropertyCard
-              key={property._id}
-              id={property._id}
-              title={property.title}
-              price={property.price}
-              quantity={property.quantity}
-              photo={property.photo}
-              description={property.description}
-            />
-          ))}
-        
-      </Grid>
+      <Card sx={{ mt:"20px" }}>
+        <TableContainer>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Item Name</TableCell>
+                <TableCell>Item Type</TableCell>
+                <TableCell align="left">Description</TableCell>
+                <TableCell align="right">Quantity</TableCell>
+                <TableCell align="right">Price</TableCell>
+
+              </TableRow>
+            </TableHead>
+            <TableBody>
+
+              {allProperties.map((property) => (
+                <TableRow
+                  key={property._id}
+                  sx={{
+                    '&:last-child td, &:last-child th': { border: 0 },
+                    '&:hover': {
+                      backgroundColor: "#d9d8d7",
+                    }
+                  }}
+                  component={Link}
+                  to={`/properties/show/${property._id}`}
+                >
+                  <TableCell component="th" scope="row">
+                    {property.title}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {property.propertyType.toUpperCase()}
+                  </TableCell>
+                  <TableCell align="left">{property.description.length > 40 ? (property.description.substr(0, 40)) + "..." : property.description}</TableCell>
+                  <TableCell align="right">{property.quantity}</TableCell>
+                  <TableCell align="right">{property.price.toLocaleString()}$</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Card>
+
       {allProperties.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton

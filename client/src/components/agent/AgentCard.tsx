@@ -39,7 +39,6 @@ const AgentCard = ({
 
         return `/agents/show/${id}`;
     };
-
     return (
         <Box
             component={Link}
@@ -81,9 +80,7 @@ const AgentCard = ({
                     <Typography fontSize={22} fontWeight={600} color="#11142d">
                         {name}
                     </Typography>
-                    <Typography fontSize={14} color="#808191">
-                        Real-Estate Agent
-                    </Typography>
+                    
                 </Stack>
                 <Stack
                     direction="row"
@@ -96,18 +93,7 @@ const AgentCard = ({
                         icon={<EmailOutlined sx={{ color: "#808191" }} />}
                         name={email}
                     />
-                    <InfoBar
-                        icon={<Place sx={{ color: "#808191" }} />}
-                        name="London"
-                    />
-                    <InfoBar
-                        icon={<Phone sx={{ color: "#808191" }} />}
-                        name="+502-3231-4141"
-                    />
-                    <InfoBar
-                        icon={<LocationCity sx={{ color: "#808191" }} />}
-                        name={`${noOfProperties} Properties`}
-                    />
+                    
                 </Stack>
             </Stack>
         </Box>

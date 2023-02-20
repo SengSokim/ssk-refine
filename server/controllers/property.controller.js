@@ -112,7 +112,6 @@ const updateProperty = async (req, res) => {
             req.body;
 
         const photoUrl = await cloudinary.uploader.upload(photo);
-
         await Property.findByIdAndUpdate(
             { _id: id },
             {
