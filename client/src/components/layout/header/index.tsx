@@ -8,7 +8,7 @@ import {
   Typography,
   Avatar,
 } from "@pankod/refine-mui";
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
+
 
 import { ColorModeContext } from "contexts";
 
@@ -27,13 +27,6 @@ export const Header: React.FC = () => {
           justifyContent="flex-end"
           alignItems="center"
         >
-          <IconButton
-            onClick={() => {
-              setMode();
-            }}
-          >
-            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-          </IconButton>
           <Stack
             direction="row"
             gap="16px"

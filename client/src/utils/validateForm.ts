@@ -28,9 +28,9 @@ export const validateForm = (formValues: FormValues) => {
         }
         break;
 
-      case 'location':
-        if (!formValues.location) {
-          errors.message = 'Location is required';
+      case 'quantity':
+        if (!formValues.quantity) {
+          errors.message = 'Quantity is required';
           hasError = true;
         }
         break;

@@ -11,8 +11,6 @@ const AgentProfile = () => {
         id: id as string,
     });
 
-    console.log(data);
-
     const myProfile = data?.data ?? [];
 
     if (isLoading) return <div>loading...</div>;

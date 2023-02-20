@@ -5,6 +5,7 @@ import { Box, Stack, Typography, TextField, Select, MenuItem } from '@pankod/ref
 import { useNavigate } from '@pankod/refine-react-router-v6'
 import { useMemo } from "react";
 import { PropertyCard, CustomButton } from 'components'
+import { Grid } from '@mui/material';
 const AllProperties = () => {
   const navigate = useNavigate();
 
@@ -17,9 +18,8 @@ const AllProperties = () => {
     filters, setFilters
 
   } = useTable();
-
   const allProperties = data?.data ?? [];
-
+  
   const currentPrice = sorter.find((item) => item.field === 'price')?.order;
   const toggleSort = (field: string) => {
     setSorter([{ field, order: currentPrice === 'asc' ? 'desc' : 'asc' }])
@@ -121,19 +121,20 @@ const AllProperties = () => {
 
         <CustomButton title="Add Property" handleClick={() => navigate('/properties/create')} backgroundColor="#475be8" color="#fcfcfc" icon={<Add />}></CustomButton>
       </Stack>
-      <Box mt="20px" sx={{ display: "Flex", flexWrap: "wrap", gap: 3 }}>
-        {allProperties.map((property) => (
-          <PropertyCard
-            key={property._id}
-            id={property._id}
-            title={property.title}
-            price={property.price}
-            location={property.location}
-            photo={property.photo}
-
-          />
-        ))}
-      </Box>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          {allProperties.map((property) => (
+            <PropertyCard
+              key={property._id}
+              id={property._id}
+              title={property.title}
+              price={property.price}
+              quantity={property.quantity}
+              photo={property.photo}
+              description={property.description}
+            />
+          ))}
+        
+      </Grid>
       {allProperties.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton
@@ -160,7 +161,7 @@ const AllProperties = () => {
             required
             inputProps={{ 'aria-label': 'Without label' }}
             defaultValue={10}
-            onChange={(e) => {setPageSize(e.target.value ? Number(e.target.value) : 10); }}
+            onChange={(e) => { setPageSize(e.target.value ? Number(e.target.value) : 10); }}
           >
             {[10, 20, 30, 40, 50].map((size) => (
               <MenuItem key={size} value={size}>Show {size}</MenuItem>

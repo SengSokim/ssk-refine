@@ -21,7 +21,7 @@ export interface PropertyProps {
     _id: string,
     title: string,
     description: string,
-    location: string,
+    quantity: string,
     price: string,
     photo: string,
     creator: string

@@ -92,7 +92,7 @@ const Form = ({type, register,handleSubmit,handleImageChange,formLoading,onFinis
             </FormControl>
           <FormControl>
               <FormHelperText sx={{ fontWeight: 500, margin: '10px 0', fontSize: 16, color: '#11142d' }}>
-                Enter location
+                Enter Quantity
               </FormHelperText>
               <TextField 
                 fullWidth
@@ -101,7 +101,7 @@ const Form = ({type, register,handleSubmit,handleImageChange,formLoading,onFinis
                 color="info"
                 
                 variant='outlined'
-                {...register('location', {required: true})}
+                {...register('quantity', {required: true})}
               />
             </FormControl>
             <Stack direction="column" gap={1} justifyContent="center" mb={2}>

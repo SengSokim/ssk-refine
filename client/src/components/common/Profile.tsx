@@ -106,9 +106,10 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
         {properties?.map((property: PropertyProps) => (
           <PropertyCard key={property._id} id={property._id}
             title={property.title}
-            location={property.location}
+            quantity={property.quantity}
             price={property.price}
             photo={property.photo}
+            description={property.description}
           />
         ))}
       </Box>

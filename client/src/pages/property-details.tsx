@@ -134,7 +134,7 @@ const PropertyDetails = () => {
                 >
                   <Place sx={{ color: "#808191" }} />
                   <Typography fontSize={14} color="#808191">
-                    {propertyDetails.location}
+                    {propertyDetails.quantity}
                   </Typography>
                 </Stack>
               </Box>
