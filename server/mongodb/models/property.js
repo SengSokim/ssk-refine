@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 
-autoIncrement = require('mongoose-auto-increment');
+
 const PropertySchema = new mongoose.Schema({
     title: {type: String,require: true},
     description: {type: String,require: true},
@@ -11,7 +11,7 @@ const PropertySchema = new mongoose.Schema({
     photo: {type: String,require: true},
     creator: {type: mongoose.Schema.Types.ObjectId ,ref: 'User'},
 })
-PropertySchema.plugin(autoIncrement.plugin, { model: 'Property', field: 'itemId' });
+
 const propertyModel = mongoose.model('Property', PropertySchema);
 
 export default propertyModel
