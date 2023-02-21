@@ -35,11 +35,10 @@ const PropertyDetails = () => {
   const { id } = useParams();
   const [discount, setDiscount] = useState(0);
   const { data, isLoading, isError } = queryResult;
-  const [checkprint, setCheckPrint] = useState(false);
   const propertyDetails = data?.data ?? {};
+  console.log(propertyDetails)
   function handlePrint() {
     window.print()
-    setCheckPrint(prev => (prev = !prev))
   }
   if (isLoading) {
     return <div>Loading...</div>;
