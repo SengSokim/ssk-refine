@@ -132,7 +132,7 @@ const AllProperties = () => {
         <CustomButton title="Add Item" handleClick={() => navigate('/properties/create')} backgroundColor="#475be8" color="#fcfcfc" icon={<Add />}></CustomButton>
       </Stack>
       <Card sx={{ mt:"20px" }}>
-        <TableContainer>
+        <TableContainer sx={{ backgroundColor: "white"}}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -153,7 +153,8 @@ const AllProperties = () => {
                     '&:last-child td, &:last-child th': { border: 0 },
                     '&:hover': {
                       backgroundColor: "#d9d8d7",
-                    }
+                    },
+                    
                   }}
                   component={Link}
                   to={`/properties/show/${property._id}`}

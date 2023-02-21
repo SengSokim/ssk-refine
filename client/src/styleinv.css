@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Khmer&display=swap');
+
+    body {
+        background-color: #24252a;
+        font-family: 'Khmer', 'Inter';
+    }
+
+    .paper {
+        width: 297mm;
+        height: 310mm;
+        background-color: #fff;
+        margin: auto;
+        margin-top: 20px;
+        transition: transform .2s;
+    }
+
+    .logo {
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    h6 {
+        text-align: center;
+        font-size: 1.25rem;
+        margin: 0;
+        padding-bottom: 15px;
+    }
+
+    .txt-logo {
+        color: #000;
+        position: relative;
+    }
+
+    .grid-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+        width: 100%;
+        bottom: 10;
+        top: -50;
+    }
+
+    .txt-info,
+    .contact-info,
+    .policy,
+    .notice,
+    .h1,
+    span,
+    input {
+        color: #000;
+        margin-left: 10px;
+        font-size: 1.25rem;
+        font-weight: 600;
+
+        margin-bottom: 5px;
+    }
+
+    .date-info,
+    .invoice-info,
+    .shipping {
+        color: #000;
+        margin-left: 140px;
+        font-size: 1.25rem;
+        font-family: "Helvetica Neue", Helvetica, Arial;
+        font-weight: bold;
+    }
+
+    .contact-info {
+        line-height: 1.5;
+        font-size: 0.875rem;
+        position: relative;
+        top: -120;
+    }
+
+    .item-tbl {
+        display: grid;
+        border: 1px solid;
+        border-collapse: collapse;
+        grid-template-columns: repeat(4, 1fr);
+        background-color: #fff;
+    }
+
+    .col-itemdesc,
+    .col-price,
+    .col-qty,
+    .col-total {
+        color: #5c2d27;
+        margin-left: 40px;
+        font-size: 0.75rem;
+        font-family: "Helvetica Neue", Helvetica, Arial;
+        font-weight: bold;
+
+    }
+
+    .col-itemdesc {
+        margin-right: 40px;
+    }
+
+    .col-itemdesc p {
+        width: 70px;
+    }
+
+    .white-blank {
+        background-color: #fff;
+        width: 100%;
+        content: "";
+        height: 40px;
+        margin-top: 40px;
+    }
+
+    .background {
+        position: absolute;
+        opacity: 5%;
+        transform: rotate(45deg);
+        padding-top: 100px;
+        z-index: 1;
+    }
+
+    .logo img {
+        position: relative;
+        bottom: 15px;
+    }
+
+    .logo hr {
+        position: absolute;
+        top: 60px;
+        width: 100%;
+    }
+
+    .tbl {
+        position: relative;
+        bottom: 20;
+    }
+
+    .paper-header {
+        text-align: center;
+        position: relative;
+        top: 10;
+    }
+    .paper-header h2{
+        margin:0
+    }
+    .content {
+        padding: 0 20px;
+    }
+
+    .content h2 {
+        text-align: center;
+    }
+    .header {
+        background-color: #24252a;
+        color: #fff;
+        border: 2px solid #24252a;
+    }
+
+    .paper-header-tax {
+        text-align: center;
+        position: relative;
+        top: -35;
+    }
+
+    .contact-info1 {
+        line-height: 1.8;
+        font-size: 0.875rem;
+        position: relative;
+        top: -15;
+        text-align: center;
+    }
+
+    *[contentEditable] {
+        border-radius: 0.25em;
+        min-width: 1em;
+        outline: 0;
+    }
+
+    *[contentEditable] {
+        cursor: pointer;
+    }
+
+    span[contenteditable] {
+        display: inline-block;
+    }
+
+    .btn {
+        float: right;
+        padding-right: 15%;
+        padding-top: 0.5em;
+    }
+
+    .btn button {
+        padding: 5px;
+    }
+
+    .active {
+        transform: scale(1.5);
+    }
+
+    .currency:not(:empty):before {
+        top: 0;
+        content: "$";
+        font-size: 1rem;
+        float: right;
+    }
+    @media print {
+        
+        page {
+            position: absolute;
+            top: 0;
+            left:0;
+            z-index: 99999;
+        }
+        
+    }
+    page {
+        width: 21cm;
+        height: 29.7cm;
+    }
+
+    page {
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }

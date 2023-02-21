@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import { Refine, AuthProvider } from "@pankod/refine-core";
 import {
@@ -7,13 +7,11 @@ import {
   CssBaseline,
   GlobalStyles,
   ReadyPage,
-  ErrorComponent,
+  ErrorComponent
 } from "@pankod/refine-mui";
-import { 
+import {
   AccountCircleOutlined,
-  
   PeopleAltOutlined,
-  
   VillaOutlined
 } from "@mui/icons-material";
 import dataProvider from "@pankod/refine-simple-rest";
@@ -22,7 +20,7 @@ import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
 import { ColorModeContextProvider } from "contexts";
 import { Title, Sider, Layout, Header } from "components/layout";
-import { 
+import {
   Login,
   Home,
   Agents,
@@ -32,6 +30,7 @@ import {
   CreateProperty,
   AgentProfile,
   EditProperty,
+  Invoice
 } from "pages";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
@@ -52,20 +51,20 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 
 function App() {
   const authProvider: AuthProvider = {
-    login: async({ credential }: CredentialResponse) => {
+    login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
 
       // save user to mongoDB...
-      if(profileObj) {
-        const response = await fetch('https://refine-dahboard.onrender.com/api/v1/users', { 
-        method: 'POST',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify({
-          name: profileObj.name,
-          email: profileObj.email,
-          avatar: profileObj.picture,
+      if (profileObj) {
+        const response = await fetch('https://refine-dahboard.onrender.com/api/v1/users', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({
+            name: profileObj.name,
+            email: profileObj.email,
+            avatar: profileObj.picture,
+          })
         })
-      })
         const data = await response.json();
         if (response.status === 200) {
           localStorage.setItem(
@@ -76,7 +75,7 @@ function App() {
               userid: data._id
             })
           );
-        }else{
+        } else {
           return Promise.reject();
         }
       }
@@ -142,7 +141,6 @@ function App() {
               icon: <PeopleAltOutlined />,
               list: Agents,
               show: AgentProfile,
-              
             },
             {
               name: "my-profile",
@@ -152,13 +150,15 @@ function App() {
               icon: <AccountCircleOutlined />,
               list: MyProfile,
             },
-          ]}
+
+          ]
+          }
           Title={Title}
           Sider={Sider}
           Layout={Layout}
           Header={Header}
-          routerProvider={routerProvider}
           authProvider={authProvider}
+          routerProvider={routerProvider}
           LoginPage={Login}
           DashboardPage={Home}
         />

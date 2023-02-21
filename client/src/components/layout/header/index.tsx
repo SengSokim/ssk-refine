@@ -26,6 +26,12 @@ export const Header: React.FC = () => {
           width="100%"
           justifyContent="flex-end"
           alignItems="center"
+          sx={{ 
+            '@media print': {
+              display:'none'
+            }
+          
+          }}
         >
           <Stack
             direction="row"
