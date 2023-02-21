@@ -36,7 +36,7 @@ const PropertyDetails = () => {
   const [discount, setDiscount] = useState(0);
   const { data, isLoading, isError } = queryResult;
   const propertyDetails = data?.data ?? {};
-  console.log(propertyDetails)
+
   function handlePrint() {
     window.print()
   }
@@ -90,6 +90,11 @@ const PropertyDetails = () => {
   const invoiceSubtotal = (rows);
   const invoiceTaxes = TAX_RATE * invoiceSubtotal;
   const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+  // time
+  const date = propertyDetails.createdAt.split('T')[0]
+  const day = date.split('-')[2]
+  const month = date.split('-')[1]
+  const year = date.split('-')[0]
   return (
     <div>
       <Box
@@ -120,6 +125,9 @@ const PropertyDetails = () => {
                   <TableRow>
                     <TableCell align="center" colSpan={3}>
                       {propertyDetails.title}
+                    </TableCell>
+                    <TableCell align="right" colSpan={3}>
+                      {day}/{month}/{year}
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -313,7 +321,7 @@ const PropertyDetails = () => {
 
                   <Typography >កាលបរិច្ឆេទ<br />
                     Date </Typography>
-                  <Typography >21/02/2023
+                  <Typography >{day}/{month}/{year}
                   </Typography>
                 </Typography>
               </Grid>

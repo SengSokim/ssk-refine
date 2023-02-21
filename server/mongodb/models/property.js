@@ -8,7 +8,7 @@ const PropertySchema = new mongoose.Schema({
     propertyType: {type: String,require: true},
     quantity: {type: Number,require: true},
     price: {type: Number,require: true},
-    photo: {type: String,require: true},
+    photo: {type: String,require: false},
     creator: {type: mongoose.Schema.Types.ObjectId ,ref: 'User'},
 },{timestamps:true})
 
