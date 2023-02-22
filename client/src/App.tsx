@@ -30,7 +30,6 @@ import {
   CreateProperty,
   AgentProfile,
   EditProperty,
-  Invoice
 } from "pages";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";

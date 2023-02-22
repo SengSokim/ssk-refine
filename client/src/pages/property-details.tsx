@@ -96,12 +96,18 @@ const PropertyDetails = () => {
   const month = date.split('-')[1]
   const year = date.split('-')[0]
   return (
-    <div>
+    <Box>
       <Box
         borderRadius="15px"
         padding="20px"
         bgcolor="#FCFCFC"
         width="100%"
+        sx={{
+          '@media print': {
+            display: 'none'
+          }
+
+        }}
       >
         <Typography fontSize={25} fontWeight={700} color="#11142D">
           Item Details
@@ -261,11 +267,15 @@ const PropertyDetails = () => {
           </Grid>
 
         </Grid>
-      </Box>
+      </Box >
       <Grid item xs={8} sm={12} md={12}>
-        <page>
+        <Box sx={{ width: '21cm',
+        height: '29.7cm', backgroundColor:'#fff', margin: '10px auto','@media print': {
+          position: 'absolute', top: '0', left:'0'
+        }
+}}>
           <Stack direction="column" spacing={2} sx={{ textAlign: 'center' }}>
-            <Typography sx={{ marginTop: "20px", fontSize: "2rem", fontWeight: '500' }}>រោងពុម្ព សេងហួរ</Typography>
+            <Typography sx={{ marginTop: "20px", fontSize: "2rem", fontWeight: '600',fontFamily:'Khmer' }}>រោងពុម្ព សេងហួរ</Typography>
             <Typography sx={{ fontSize: "1.25rem", fontWeight: '400' }}>Seng Hour Printing House</Typography>
             <Typography>ផ្ទះលេខ៤០ ផ្លូវ៧៩BT សង្កាត់បឹងទំពន់ ខណ្ឌមានជ័យ រាជធានីភ្នំពេញ</Typography>
             <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -275,7 +285,7 @@ const PropertyDetails = () => {
             <hr />
 
             <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              វិ​ក័​យ​ប័ត្រអាករ <br />
+              វិ​ក្ក​យ​បត្រអាករ <br />
               TAX INVOICE
             </Typography>
           </Stack>
@@ -284,7 +294,7 @@ const PropertyDetails = () => {
           <Box sx={{ width: '100%' }}>
 
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-              <Grid xs={6}>
+              <Grid item xs={6}>
                 <Typography sx={{ marginLeft: "3rem" }}>
                   <Typography>អតិថិជន / Customer</Typography>
                   <Typography sx={{
@@ -293,31 +303,31 @@ const PropertyDetails = () => {
                     Company Name: <span style={{
                       fontWeight: "400",
                       fontSize: "1rem"
-                    }} contentEditable /></Typography>
-                  <hr />
+                    }} contentEditable suppressContentEditableWarning={true} /></Typography>
+                  <hr style={{ border: '1px solid black' }}/>
                   <Typography sx={{
                     textAlign: 'left'
                   }}>លេខទូរស័ព្ទ<br />
                     Telephone No. :<span style={{
                       fontWeight: "400",
                       fontSize: "1rem"
-                    }} contentEditable /></Typography>
-                  <hr />
+                    }} contentEditable suppressContentEditableWarning={true} /></Typography>
+                  <hr style={{ border: '1px solid black' }}/>
                   <Typography sx={{
                     textAlign: 'left'
-                  }}>អាសយដ្ឋាន<br />
+                  }}>ឤស័យដ្ឋាន<br />
                     Address : <span style={{
                       fontWeight: "400",
                       fontSize: "1rem"
-                    }} contentEditable /></Typography>
-                  <hr />
+                    }} contentEditable suppressContentEditableWarning={true} /></Typography>
+                  <hr style={{ border: '1px solid black' }}/>
                 </Typography>
               </Grid>
-              <Grid xs={6}>
+              <Grid item xs={6}>
                 <Typography sx={{ textAlign: 'right', marginRight: "3rem" }}>
-                  <Typography >លេខ​វិ​ក័​យ​ប័ត្រ <br />
+                  <Typography >លេខ​វិ​ក្ក​យ​បត្រ <br />
                     Invoice No.</Typography>
-                  <Typography><span contentEditable style={{ color: 'red' }}>SH23-0001</span></Typography>
+                  <Typography><span contentEditable suppressContentEditableWarning={true} style={{ color: 'red' }}>SH23-0001</span></Typography>
 
                   <Typography >កាលបរិច្ឆេទ<br />
                     Date </Typography>
@@ -327,8 +337,7 @@ const PropertyDetails = () => {
               </Grid>
             </Grid>
           </Box>
-          <TableContainer component={Paper} sx={{ padding: '0 1rem' }}>
-
+          <TableContainer sx={{ padding: '0 1rem' }}>
             <Table sx={{ minWidth: 700 }} aria-label="spanning table">
               <TableHead>
                 <TableRow sx={{ backgroundColor: "black" }}>
@@ -358,6 +367,13 @@ const PropertyDetails = () => {
                   <TableCell sx={{ color: "black" }} align="right">{propertyDetails.price}$</TableCell>
                   <TableCell sx={{ color: "black" }} align="right">{(propertyDetails.quantity * propertyDetails.price).toFixed(2)}$</TableCell>
 
+                </TableRow>
+                <TableRow>
+                  <TableCell sx={{ color: "black" }} align="left">2</TableCell>
+                  <TableCell sx={{ color: "black" }} contentEditable suppressContentEditableWarning={true}></TableCell>
+                  <TableCell sx={{ color: "black" }} align="right" contentEditable suppressContentEditableWarning={true}></TableCell>
+                  <TableCell sx={{ color: "black" }} align="right" contentEditable suppressContentEditableWarning={true}></TableCell>
+                  <TableCell sx={{ color: "black" }} align="right" contentEditable suppressContentEditableWarning={true}></TableCell>
                 </TableRow>
 
                 <TableRow>
@@ -395,9 +411,9 @@ const PropertyDetails = () => {
             </Table>
           </TableContainer>
 
-        </page>
+        </Box>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

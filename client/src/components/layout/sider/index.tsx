@@ -159,6 +159,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
           resource={name.toLowerCase()}
           action="list"
           params={{ resource: item }}
+          
         >
           <Tooltip
             title={label ?? name}
@@ -222,6 +223,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
         placement="right"
         disableHoverListener={!collapsed}
         arrow
+        
       >
         <ListItemButton
           component={Link}
@@ -347,6 +349,9 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             md: "block",
           },
           transition: "width 0.3s ease",
+          '@media print': {
+            display:'none'
+          }
         }}
       />
       <Box
@@ -446,6 +451,9 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             bgcolor: "#475be8",
             zIndex: 1199,
             width: "36px",
+            '@media print': {
+              display: 'none'
+            }
           }}
         >
           <IconButton
