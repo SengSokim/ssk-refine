@@ -82,7 +82,7 @@ const createProperty = async (req, res) => {
 
         if (!user) throw new Error("User not found");
 
-        const photoUrl = await cloudinary.uploader.upload(photo);
+        const photoUrl = await cloudinary.uploader.upload(photo) || "http://res.cloudinary.com/dwgbzywu1/image/upload/v1677067322/yggx1b49mopg9k5rihnc.jpg";
 
         const newProperty = await Property.create({
             title,
@@ -90,7 +90,7 @@ const createProperty = async (req, res) => {
             propertyType,
             quantity,
             price,
-            photo: photoUrl.url,
+            photo: photoUrl || photoUrl.url,
             creator: user._id,
         });
 
@@ -111,7 +111,7 @@ const updateProperty = async (req, res) => {
         const { title, description, propertyType, quantity, price, photo } =
             req.body;
 
-        const photoUrl = await cloudinary.uploader.upload(photo);
+        const photoUrl = await cloudinary.uploader.upload(photo) || "http://res.cloudinary.com/dwgbzywu1/image/upload/v1677067322/yggx1b49mopg9k5rihnc.jpg";
         await Property.findByIdAndUpdate(
             { _id: id },
             {
@@ -120,7 +120,7 @@ const updateProperty = async (req, res) => {
                 propertyType,
                 quantity,
                 price,
-                photo: photoUrl.url || photo,
+                photo: photoUrl.url || photoUrl,
             },
         );
 
